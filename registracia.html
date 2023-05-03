@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Организация научных конференций</title>
+<link rel="stylesheet" type="text/css"
+        href="CSS_registracia.css">
+<meta name="description" content="Веб-приложение для организации научных конференций."/>
+        <meta name="keywords" content="наука, конференции" />
+  </head>
+
+
+  <body>
+    <header class="header">
+     <img class="image" src="C:\Users\rzarg\OneDrive\Рабочий стол\Диплом\Картинки\shapka2.png" width="1535" height="70">  
+
+     <nav class="navigator">
+      <ul class = "nav_list">
+      <li class = "nav_item"><a href="glavnaya.html">Главная</a></li>
+      <li class = "nav_item"><a href="conferencia.html">Конференции</a>
+		<ul class="menu_conf">
+			<li><a href="">Каталог событий</a></li>
+			<li><a href="">Каталог принятых статей</a></li>
+		  </ul>
+	</li>
+      <li class = "nav_item"><a href="#">Личный кабинет</a></li>
+      </ul>
+    </nav>
+    </header>
+
+
+
+    <div class="main">  	
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+			<div class="signup">
+				<form action="http://localhost/auth.php" method="POST">
+					<div class="reg">
+					<label for="chk" aria-hidden="true">Регистрация</label>
+					<input type="text" name="username" placeholder="Имя пользователя" required="">
+					<input type="email" name="email" placeholder="Email" required="">
+					<input type="password" name="password" placeholder="Пароль" required="">
+					</div>
+					<button type="submit" name="register">Зарегистрироваться</button>
+				</form>
+			</div>
+
+			<div class="login">
+				<form action="http://localhost/auth.php" method="POST">
+					<label for="chk" aria-hidden="true">Вход</label>
+					<input type="text" name="username" placeholder="Имя пользователя" required="">
+					<input type="password" name="password" placeholder="Пароль" required="">
+					<button type="submit"  name="log">Войти</button>
+				</form>
+			</div>
+	</div>
+
+
+	<!-- <script>
+
+  const registerForm = document.getElementById('register-form');
+  const loginForm = document.getElementById('login-form');
+registerForm.addEventListener('submit', async (event) => {
+event.preventDefault();
+
+const formData = new FormData(event.target);
+const username = formData.get('username');
+const email = formData.get('email');
+const password = formData.get('password');
+
+try {
+  const response = await fetch('/register', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ username, email, password }),
+  });
+
+  const data = await response.json();
+  if (response.ok) {
+    alert(data.message);
+  } else {
+    alert(data.error);
+  }
+} catch (error) {
+  console.error('Error:', error);
+  alert('An error occurred while registering.');
+}
+});
+
+loginForm.addEventListener('submit', async (event) => {
+event.preventDefault();
+const formData = new FormData(event.target);
+const username = formData.get('username');
+const password = formData.get('password');
+
+try {
+  const response = await fetch('/login', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ username, password }),
+  });
+
+  const data = await response.json();
+  if (response.ok) {
+    alert(data.message);
+    // Перенаправьте пользователя на страницу после успешного входа
+    location.href = 'glavnaya.html';
+  } else {
+    alert(data.error);
+  }
+} catch (error) {
+  console.error('Error:', error);
+  alert('An error occurred while logging in.');
+}
+});
+
+	  </script> -->
+</body>
+  
+</html>
