@@ -23,7 +23,7 @@ if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
 				<li><a href="#" class="active" data-tab="articles">Мои статьи</a></li>
 				<li><a href="#" data-tab="applications">Мои заявки</a></li>
 				<li><a href="#" data-tab="profile">Профиль</a></li>
-				<li><a href="#">Выйти</a></li>
+				<li><a href="#" id="logout-link">Выйти</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -52,7 +52,6 @@ if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
 
 </div>
 		</div>
-
 		<div class="tab-content" data-tab="applications">
 			<h1>Мои заявки</h1>
 			<button onclick="window.location.href='http://localhost/become_admin.php'" class="btn btn-primary">Создать конференцию</button> <br><br>
@@ -215,6 +214,8 @@ if (!isset($_SESSION['id']) || empty($_SESSION['id'])) {
 	input[type="submit"]:hover {
 		background-color: #555;
 	}
+
+	
 	
 	/* Стили для списка статей */
 	.article-list {
@@ -412,7 +413,6 @@ button.btn.btn-primary:focus {
   background-color: #3e8e41;
   border-color: #3e8e41;
 }
-
 	</style>
 
 
@@ -518,6 +518,38 @@ const applicationsTabContent = document.querySelector('.tab-content[data-tab="ap
     <?php endwhile; ?>
 
     applicationsTabContent.appendChild(conferencesList);
+
+
+
+// Находим ссылку на выход в навигационном меню
+const logoutLink = document.querySelector('#logout-link');
+
+// Назначаем обработчик клика на ссылку
+logoutLink.addEventListener('click', (event) => {
+  // Отменяем стандартное действие ссылки
+  event.preventDefault();
+  
+  // Выполняем запрос на сервер для выхода из личного кабинета
+  const xhr = new XMLHttpRequest();
+  xhr.open('POST', 'exit.php');
+  xhr.onload = () => {
+    // Перенаправляем пользователя на HTML страницу
+    window.location.href = 'glavnaya.html';
+  };
+  xhr.send();
+
+  // Добавляем обработчик события DOMContentLoaded
+  document.addEventListener('DOMContentLoaded', () => {
+    // Делаем видимым содержимое страницы
+    document.body.style.visibility = 'visible';
+  });
+  
+  // Скрываем содержимое страницы перед загрузкой
+  document.body.style.visibility = 'hidden';
+});
+
+
+
 </script>
 
 
