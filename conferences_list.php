@@ -18,8 +18,9 @@ if (mysqli_num_rows($result) > 0) {
         echo "Дата проведения: " . $row["date"]. "<br>";
         echo '<form action="apply_conference.php" method="post">';
         echo '<input type="hidden" name="conference_id" value="' . $row["id"] . '">';
-        echo '<input type="submit" value="Подать заявку">';
-        echo '</form>';
+        echo '<button type="submit" style="background-color: #050563e6; color: white; padding: 10px 20px; border-radius: 5px; border: none; cursor: pointer;" 
+        onmouseover="this.style.backgroundColor=\'#050563cc\'" onmouseout="this.style.backgroundColor=\'#050563e6\'">Подать заявку</button>';
+        echo '</form>';                        
         echo "<br>";
     }
 } else {
